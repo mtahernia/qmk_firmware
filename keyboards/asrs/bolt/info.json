@@ -6,81 +6,104 @@
 	"usb":{
 		"vid":"0x03EB",
 		"pid":"0x6060",
-		"device_version": "0.0.1"
+		"device_version": "0.0.2",
+        "force_nkro": true
 	},
 	"processor": "atmega32u4",
 	"bootloader": "atmel-dfu",
-
-	"debounce": 5,
-	"diode_direction": "COL2ROW",
-	"matrix_pins":{
+    "debounce": 5,
+    "diode_direction": "COL2ROW",
+    "matrix_pins":{
         "cols": ["F7", "C7", "C6", "B6", "B5", "B4", "F6", "F5", "F4", "E6", "B0", "B1", "B2"],
         "rows": ["F0", "F1", "D7", "D6" ]
 	},
-	"rgblight": {
-        "led_count": 56,
+    "ws2812":{
         "pin": "D3",
+        "driver": "bitbang"
+    },
+    "rgblight": {
+        "driver": "ws2812",
+        "led_count": 56,
         "hue_steps": 10,
-        // "saturation": 0,
-        // "value": 100,
         "sleep": true,
         "saturation_steps": 17,
-        "brightness_steps": 17
-        // "animations": {
-            // "static_gradient": true
-            // "breathing": true
-        // }
+        "brightness_steps": 17,
+        "animations": {
+            "breathing": true,
+            "rainbow_mood": true,
+            "snake": false
+        }
     },
+    "mouse_key": {
+        "enabled": true
+    },
+
+
+    "bootmagic": {
+        "enabled": true,
+        "matrix": [0, 0]
+    },
+
 	"layouts": {
         "LAYOUT": {
             "layout": [
-                {"label":"K000 (F0,F7)", "x":0, "y":0},
-                {"label":"K001 (F0,C7)", "x":1, "y":0},
-                {"label":"K002 (F0,C6)", "x":2, "y":0},
-                {"label":"K003 (F0,B6)", "x":3, "y":0},
-                {"label":"K004 (F0,B5)", "x":4, "y":0},
-                {"label":"K005 (F0,B4)", "x":5, "y":0},
-                {"label":"K006 (F0,F6)", "x":7.5, "y":0},
-                {"label":"K007 (F0,F5)", "x":8.5, "y":0},
-                {"label":"K008 (F0,F4)", "x":9.5, "y":0},
-                {"label":"K009 (F0,E6)", "x":10.5, "y":0},
-                {"label":"K010 (F0,B0)", "x":11.5, "y":0},
-                {"label":"K011 (F0,B1)", "x":12.5, "y":0 },
-                {"label":"K012 (F0,B2)", "x":13.5, "y":0 },
-                {"label":"K100 (F1,F7)", "x":0, "y":1, "w":1.25},
-                {"label":"K101 (F1,C7)", "x":1.25, "y":1},
-                {"label":"K102 (F1,C6)", "x":2.25, "y":1},
-                {"label":"K103 (F1,B6)", "x":3.25, "y":1},
-                {"label":"K104 (F1,B5)", "x":4.25, "y":1},
-                {"label":"K105 (F1,B4)", "x":5.25, "y":1},
-                {"label":"K106 (F1,F6)", "x":7.75, "y":1},
-                {"label":"K107 (F1,F5)", "x":8.75, "y":1},
-                {"label":"K108 (F1,F4)", "x":9.75, "y":1},
-                {"label":"K109 (F1,E6)", "x":10.75, "y":1},
-                {"label":"K110 (F1,B0)", "x":11.75, "y":1},
-                {"label":"K111 (F1,B1)", "x":12.75, "y":1, "w":1.5},
-                {"label":"K200 (D7,F7)", "x":0, "y":2, "w":1.75},
-                {"label":"K201 (D7,C7)", "x":1.75, "y":2},
-                {"label":"K202 (D7,C6)", "x":2.75, "y":2},
-                {"label":"K203 (D7,B6)", "x":3.75, "y":2},
-                {"label":"K204 (D7,B5)", "x":4.75, "y":2},
-                {"label":"K205 (D7,B4)", "x":5.75, "y":2},
-                {"label":"K206 (D7,F6)", "x":7.25, "y":2},
-                {"label":"K207 (D7,F5)", "x":8.25, "y":2},
-                {"label":"K208 (D7,F4)", "x":9.25, "y":2},
-                {"label":"K209 (D7,E6)", "x":10.25, "y":2},
-                {"label":"K210 (D7,B0)", "x":11.25, "y":2},
-                {"label":"K211 (D7,B1)", "x":12.25, "y":2},
-                {"label":"K311 (D5,B1)", "x":13.25, "y":2},
-                {"label":"K300 (D5,F7)", "x":0, "y":3, "w":1.25},
-                {"label":"K301 (D5,C7)", "x":1.25, "y":3, "w":1.25},
-                {"label":"K303 (D5,B6)", "x":3.25, "y":3, "w":1.25},
-                {"label":"K304 (D5,B5)", "x":4.5, "y":3, "w":2.25},
-                {"label":"K306 (D5,F6)", "x":7.25, "y":3, "w":2.25},
-                {"label":"K307 (D5,F5)", "x":9.5, "y":3},
-                {"label":"K308 (D5,F4)", "x":11.25, "y":3},
-                {"label":"K309 (D5,E6)", "x":12.25, "y":3},
-                {"label":"K310 (D5,B0)", "x":13.25, "y":3}
+                {"label":"K000 (F0,F7)", "matrix": [0,0],  "x":0,    "y":0, "w":1},
+                {"label":"K001 (F0,C7)", "matrix": [0,1],  "x":1,    "y":0, "w":1},
+                {"label":"K002 (F0,C6)", "matrix": [0,2],  "x":2,    "y":0, "w":1},
+                {"label":"K003 (F0,B6)", "matrix": [0,3],  "x":3,    "y":0, "w":1},
+                {"label":"K004 (F0,B5)", "matrix": [0,4],  "x":4,    "y":0, "w":1},
+                {"label":"K005 (F0,B4)", "matrix": [0,5],  "x":5,    "y":0, "w":1},
+                {"label":"K006 (F0,F6)", "matrix": [0,6],  "x":7.5,  "y":0, "w":1},
+                {"label":"K007 (F0,F5)", "matrix": [0,7],  "x":8.5,  "y":0, "w":1},
+                {"label":"K008 (F0,F4)", "matrix": [0,8],  "x":9.5,  "y":0, "w":1},
+                {"label":"K009 (F0,E6)", "matrix": [0,9],  "x":10.5, "y":0, "w":1},
+                {"label":"K010 (F0,B0)", "matrix": [0,10], "x":11.5, "y":0, "w":1},
+                {"label":"K011 (F0,B1)", "matrix": [0,11], "x":12.5, "y":0, "w":1},
+                {"label":"K012 (F0,B2)", "matrix": [0,12], "x":13.5, "y":0, "w":1},
+
+
+                {"label":"K100 (F1,F7)", "matrix": [1,0],  "x":0,     "y":1, "w":1.25},
+                {"label":"K101 (F1,C7)", "matrix": [1,1],  "x":1.25,  "y":1, "w":1},
+                {"label":"K102 (F1,C6)", "matrix": [1,2],  "x":2.25,  "y":1, "w":1},
+                {"label":"K103 (F1,B6)", "matrix": [1,3],  "x":3.25,  "y":1, "w":1},
+                {"label":"K104 (F1,B5)", "matrix": [1,4],  "x":4.25,  "y":1, "w":1},
+                {"label":"K105 (F1,B4)", "matrix": [1,5],  "x":5.25,  "y":1, "w":1},
+                {"label":"K106 (F1,F6)", "matrix": [1,6],  "x":7.75,  "y":1, "w":1},
+                {"label":"K107 (F1,F5)", "matrix": [1,7],  "x":8.75,  "y":1, "w":1},
+                {"label":"K108 (F1,F4)", "matrix": [1,8],  "x":9.75,  "y":1, "w":1},
+                {"label":"K109 (F1,E6)", "matrix": [1,9],  "x":10.75, "y":1, "w":1},
+                {"label":"K110 (F1,B0)", "matrix": [1,10], "x":11.75, "y":1, "w":1},
+                {"label":"K112 (F1,B2)", "matrix": [1,12], "x":12.75, "y":1, "w":1.5},
+                
+
+                {"label":"K200 (D7,F7)", "matrix": [2,0],  "x":0,     "y":2, "w":1.75},
+                {"label":"K201 (D7,C7)", "matrix": [2,1],  "x":1.75,  "y":2, "w":1},
+                {"label":"K202 (D7,C6)", "matrix": [2,2],  "x":2.75,  "y":2, "w":1},
+                {"label":"K203 (D7,B6)", "matrix": [2,3],  "x":3.75,  "y":2, "w":1},
+                {"label":"K204 (D7,B5)", "matrix": [2,4],  "x":4.75,  "y":2, "w":1},
+                {"label":"K205 (D7,B4)", "matrix": [2,5],  "x":5.75,  "y":2, "w":1},
+                {"label":"K206 (D7,F6)", "matrix": [2,6],  "x":7.25,  "y":2, "w":1},
+                {"label":"K207 (D7,F5)", "matrix": [2,7],  "x":8.25,  "y":2, "w":1},
+                {"label":"K208 (D7,F4)", "matrix": [2,8],  "x":9.25,  "y":2, "w":1},
+                {"label":"K209 (D7,E6)", "matrix": [2,9],  "x":10.25, "y":2, "w":1},
+                {"label":"K210 (D7,B0)", "matrix": [2,10], "x":11.25, "y":2, "w":1},
+                {"label":"K211 (D7,B1)", "matrix": [2,11], "x":12.25, "y":2, "w":1},
+                {"label":"K212 (D7,B2)", "matrix": [2,12], "x":13.25, "y":2, "w":1},
+
+
+                {"label":"K300 (D6,F7)", "matrix": [3,0],  "x":0,     "y":3, "w":1.25},
+                {"label":"K301 (D6,C7)", "matrix": [3,1],  "x":1.25,  "y":3, "w":1.25},
+
+                {"label":"K303 (D6,B6)", "matrix": [3,3],  "x":3.25,  "y":3, "w":1.25},
+                {"label":"K304 (D6,B5)", "matrix": [3,4],  "x":4.5,   "y":3, "w":2.25},
+
+                {"label":"K306 (D6,F5)", "matrix": [3,7],  "x":7.25,  "y":3, "w":2.25},
+                {"label":"K307 (D6,F4)", "matrix": [3,8],  "x":9.5,   "y":3, "w":1},
+
+                {"label":"K308 (D6,B0)", "matrix": [3,10],  "x":11.25, "y":3, "w":1},
+                {"label":"K309 (D6,B1)", "matrix": [3,11],  "x":12.25, "y":3, "w":1},
+                {"label":"K310 (D6,B2)", "matrix": [3,12], "x":13.25, "y":3, "w":1}
+
             ]
         }
     }

@@ -28,8 +28,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define DIODE_DIRECTION COL2ROW
 
 /* RBG underglow */
-// #define RGB_DI_PIN D3
-// #ifdef RGB_DI_PIN
+// #define WS2812_DI_PIN D3
+#define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_BREATHING
+// #ifdef WS2812_DI_PIN
 // #define RGBLED_NUM 55
 // #define RGBLIGHT_LED_MAP {0,1,2,3,4,5,6,7,8}
 

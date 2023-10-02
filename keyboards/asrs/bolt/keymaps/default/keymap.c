@@ -45,22 +45,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           ),
 };
 
+
+
 typedef union {
   uint32_t raw;
   struct {
-    bool     rgb_layer_change :1;
+    bool rgb_layer_change :1;
   };
 } user_config_t;
 
 user_config_t user_config;
 
-
-
-
 void keyboard_pre_init_user(void) {
   // Call the keyboard pre init code.
   // Set our LED pins as output
-  setPinOutput(RGB_DI_PIN);
+#ifdef RGBLIGHT_ENABLE
+  setPinOutput(WS2812_DI_PIN);
+#endif
+
 }
 
 
@@ -78,7 +80,9 @@ void eeconfig_init_user(void) {  // EEPROM is getting reset!
   eeconfig_update_user(user_config.raw); // Write default value to EEPROM now
 
   // use the non noeeprom versions, to write these values to EEPROM too
+#ifdef RGBLIGHT_ENABLE
   // rgblight_enable(); // Enable RGB by default
   rgblight_sethsv(HSV_WHITE);  // Set it to CYAN by default
-  rgblight_mode(1); // set to solid by default
+  rgblight_mode(RGBLIGHT_DEFAULT_MODE); // set to solid by default
+#endif
 }
