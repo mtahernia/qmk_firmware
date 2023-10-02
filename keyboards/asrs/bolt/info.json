@@ -3,12 +3,14 @@
 	"manufacturer": "Planet Express",
 	"url": "https://mehrdad.cc",
 	"maintainer": "mtahernia",
+
 	"usb":{
 		"vid":"0x03EB",
 		"pid":"0x6060",
 		"device_version": "0.0.2",
         "force_nkro": true
 	},
+
 	"processor": "atmega32u4",
 	"bootloader": "atmel-dfu",
     "debounce": 5,
@@ -17,6 +19,7 @@
         "cols": ["F7", "C7", "C6", "B6", "B5", "B4", "F6", "F5", "F4", "E6", "B0", "B1", "B2"],
         "rows": ["F0", "F1", "D7", "D6" ]
 	},
+    
     "ws2812":{
         "pin": "D3",
         "driver": "bitbang"
@@ -24,16 +27,23 @@
     "rgblight": {
         "driver": "ws2812",
         "led_count": 56,
+        // "led_map": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,
+        //             24,23,22,21,20,19,18,17,16,15,14,13,            
+        //             25,26,27,28,29,30,31,32,33,34,35,36,37,
+        //             46,45,44,43,42,41,40,39,38,
+        //             47,48,49,50,51,52,53,54,55],
         "hue_steps": 10,
         "sleep": true,
         "saturation_steps": 17,
         "brightness_steps": 17,
+        "max_brightness": 200,
         "animations": {
             "breathing": true,
             "rainbow_mood": true,
-            "snake": false
+            "snake": true
         }
     },
+    
     "mouse_key": {
         "enabled": true
     },
