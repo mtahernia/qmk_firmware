@@ -10,11 +10,11 @@ A 40% ergo keyboard designed and produced by [LAZYDESIGNERS](http://lazydesigner
 
 Make example for this keyboard (after setting up your build environment):
 
-    make asrs/bolt:default
+    make asrs/bolt:aurelius
 
 Flashing example for this keyboard:
 
-    make asrs/bolt:default:flash
+    make asrs/bolt:aurelius:flash
 
 **Reset Key:** To enter the bootloader, either push the RESET button on the PCB or the `QK_BOOT` key on the FN layer.
 
